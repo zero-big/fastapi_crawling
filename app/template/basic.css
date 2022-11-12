@@ -1,0 +1,18 @@
+﻿body {
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+}
+
+.box
+{
+	margin: 10px;
+	background: #FFF0A5;
+	border: 2px solid #FFB03B;
+}
+
+.clearBoth {
+	clear:both;
+    height:0;
+    font-size: 1px;
+    line-height: 0px;
+}
