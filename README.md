@@ -11,18 +11,21 @@ Sebastián Ramírez란 사람이 만든 파이썬 기반 오픈소스 웹 프레
 ## code
 1. FastAPi 실행 code
 
-     app = FastAPI()
+       app = FastAPI()
     
 app으로 정의한 뒤에 메서드를 불러들임
 
 3. 인덱스 페이지
-4. 
+
+       @app.get("/") async def root(request: Request):
+       return templates.TemplateResponse("index.html", {"request": request})
+     
+     get 메서드를 이용하여 index.html로 연결
+5. 
 
 
 
 2. 
-    @app.get("/")
-async def root(request: Request):
-    return templates.TemplateResponse("index.html", {"request": request})
+
 
 ## 과제 중 어려운 점
