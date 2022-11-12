@@ -10,8 +10,12 @@ Sebastián Ramírez란 사람이 만든 파이썬 기반 오픈소스 웹 프레
 
 ## code
 FastAPi 실행 code
-    
-        '''app = FastAPI()'''
+ app = FastAPI()
+ templates = Jinja2Templates(directory='template')
+
+ @app.get("/")
+ async def root(request: Request):
+     return templates.TemplateResponse("index.html", {"request": request})
         
 
 
