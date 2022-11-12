@@ -35,5 +35,10 @@ Sebastián Ramírez란 사람이 만든 파이썬 기반 오픈소스 웹 프레
       파일을 get메서드로 불러들인 후에 다른이름으로 저장할 수 있도록 만듦.
 
 
-## 어려웠던 점
+##참조
+  https://velog.io/@idj7183/Fast-API-%ED%99%9C%EC%9A%A9-2
+  블로그 dongjin im
+  
+  https://fastapi.tiangolo.com/
+  공식
 
