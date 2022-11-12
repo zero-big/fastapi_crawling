@@ -9,15 +9,20 @@ Sebastián Ramírez란 사람이 만든 파이썬 기반 오픈소스 웹 프레
 파이썬 기반 웹프레임워크 중에서 가장 빠른 프레임워크 중 하나
 
 ## code
-FastAPi 실행 code
+1. FastAPi 실행 code
 
      app = FastAPI()
-     templates = Jinja2Templates(directory='template')
+    
+app으로 정의한 뒤에 메서드를 불러들임
 
-     @app.get("/")
-     async def root(request: Request):
-         return templates.TemplateResponse("index.html", {"request": request})
-        
+3. 인덱스 페이지
+4. 
 
+
+
+2. 
+    @app.get("/")
+async def root(request: Request):
+    return templates.TemplateResponse("index.html", {"request": request})
 
 ## 과제 중 어려운 점
