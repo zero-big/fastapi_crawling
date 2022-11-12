@@ -11,7 +11,7 @@
 
 ## code FastApi 실행
     code
-        code app = FastAPI()
+        app = FastAPI()
     code
     
 
