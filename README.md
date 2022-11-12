@@ -11,9 +11,9 @@
 
 ## code
     FastAPi 실행 code
-    '''app = FastAPI()'''
-        
-code
     
+        '''app = FastAPI()'''
+        
+
 
 ## 과제 중 어려운 점
