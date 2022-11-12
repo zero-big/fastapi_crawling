@@ -13,19 +13,27 @@ Sebastián Ramírez란 사람이 만든 파이썬 기반 오픈소스 웹 프레
 
        app = FastAPI()
     
-app으로 정의한 뒤에 메서드를 불러들임
+      app으로 정의한 뒤에 메서드를 불러들임
 
-3. 인덱스 페이지
+2. 인덱스 페이지
 
        @app.get("/") async def root(request: Request):
        return templates.TemplateResponse("index.html", {"request": request})
      
-     get 메서드를 이용하여 index.html로 연결
-5. 
+      get 메서드를 이용하여 index.html로 연결
+      
+3. 크롤링 페이지
+
+       @app.get("/scrap/{keyword}", response_class=HTMLResponse)
+       async def 수집하기(request: Request, keyword:str):
+      처음엔 post메서드로 입력을 받고 크롤링 하려고 하였으나 주소접속시 바로 크롤링 되도록 변경함
+
+4. 수정 페이지
+
+       @app.get("/rename/{keyword}/{rename}", response_class=HTMLResponse)
+       async def 다른이름으로저장(request: Request, keyword: str, rename: str):
+      파일을 get메서드로 불러들인 후에 다른이름으로 저장할 수 있도록 만듦.
 
 
+## 어려웠던 점
 
-2. 
-
-
-## 과제 중 어려운 점
