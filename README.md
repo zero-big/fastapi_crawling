@@ -34,10 +34,17 @@ Sebastián Ramírez란 사람이 만든 파이썬 기반 오픈소스 웹 프레
        async def 다른이름으로저장(request: Request, keyword: str, rename: str):
       파일을 get메서드로 불러들인 후에 다른이름으로 저장할 수 있도록 만듦.
 
+
+## 실행방법
+  ###1. app디렉터리로 이동 후 터미널에서 uvicorn main:app --reload 입력
+  ###2. http://127.0.0.1:8000 접속 후 /scrap/(키워드) 키워드를 입력하면 입력 키워드의 구글 검색결과를 10페이지 가지고 옴
+
 ## 참조
   https://velog.io/@idj7183/Fast-API-%ED%99%9C%EC%9A%A9-2
+  
   블로그 dongjin im
   
   https://fastapi.tiangolo.com/
-  공식
+  
+  공식페이지
 
