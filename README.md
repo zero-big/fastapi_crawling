@@ -10,11 +10,11 @@
     파이썬 기반 웹프레임워크 중에서 가장 빠른 프레임워크 중 하나
 
 ## code
-    code
+code
     
-        '''app = FastAPI()'''
+'''app = FastAPI()'''
         
-    code
+code
     
 
 ## 과제 중 어려운 점
