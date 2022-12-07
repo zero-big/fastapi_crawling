@@ -1,13 +1,18 @@
 import glob
 from datetime import datetime
+import os
+from urllib.parse import quote_plus
 
 import pandas as pd
 import requests
+import uvicorn
 from bs4 import BeautifulSoup
+from urllib.request import urlopen
+
 from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
-
+import time
 app = FastAPI()
 templates = Jinja2Templates(directory='template')
 
@@ -48,5 +53,44 @@ async def 다른이름으로저장(request: Request, keyword: str, rename: str):
     except Exception as ex:
         return print('error'), templates.TemplateResponse("error.html", {"request": request, "keyword": keyword, "rename":rename})
 
+@app.get("/image/{keyword}", response_class=HTMLResponse)
+async def 이미지수집하기(request: Request, keyword:str):
+    try:
+        if not os.path.exists(keyword):
+            os.makedirs(keyword)
+    except OSError:
+        print('Error: Creating directory. ' + keyword)
+
+    title = []
+    url = f'https://search.naver.com/search.naver?sm=tab_hty.top&where=image&query='
+    print(url)
+    headers = {
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.62 Safari/537.36'}
+    time.sleep(0.5)
+    # res = requests.get(url, headers=headers)
+    url = url + quote_plus(keyword)
+    print(url)
+    html = urlopen(url)
+    soup = BeautifulSoup(html, "html.parser")
+    img = soup.find_all(class_='_img')
+    n = 1
+    for i in img:
+        img_url = i['data-source']
+        with urlopen(img_url) as f:
+            with open(f'./{keyword}' + keyword + str(n)+ '.jpg', wb) as h:
+                img = f.read()
+                h.write(img)
+        n += 1
+    # save_path = "/user/PycharmProjects/fastapi_crawing/" + keyword +"/"
+    # for index, image in enumerate(image[:10]):
+    #     src = image.get_atrribute('src')
+    #     t = urlopen(src).read()
+    #     file = open(os.path.join(save_path, str(index + 1) + ".jpg"), "wb")
+    #     file.write(t)
+
+    return templates.TemplateResponse("done.html", {"request": request, "keyword": keyword})
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=5000)
 
 
